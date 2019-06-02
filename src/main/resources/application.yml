@@ -1,0 +1,41 @@
+
+spring:
+  datasource:
+    #    type: com.alibaba.druid.pool.DruidDataSource  #这是druid自己定义的
+    url: jdbc:mysql://localhost:3306/hello?useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true  #这是你的jdbc_url
+    username: root  #数据库连接用户名
+    password:       #数据库连接密码
+    driverClassName: com.mysql.cj.jdbc.Driver    #jdbc驱动名，这个一定要有
+
+    tomcat:
+      max-wait: 60000
+      max-active: 100
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 'x'
+      initial-size: 10
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+    dbcp2:
+        pool-prepared-statements: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources,classpath:/static/,classpath:/public/
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+server:
+  tomcat:
+    uri-encoding: utf-8
+  port: 8080
+  servlet:
+    context-path: /finalexam
+logging:
+  level:
+    org.springframwork.web: ERROR
